@@ -13,6 +13,4 @@ fun todoTask1(collection: Collection<Int>): Nothing = TODO(
     references = { JavaCode1().task1(collection) })
 
 
-fun task1(collection: Collection<Int>): String {
-    todoTask1(collection)
-}
+fun task1(collection: Collection<Int>): String = collection.joinToString(", ", "{", "}")
