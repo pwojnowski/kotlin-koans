@@ -17,7 +17,19 @@ enum class TimeInterval {
 }
 
 // 1st solution: implement ClosedRange interface
-class DateRange(override val start: MyDate, override val endInclusive: MyDate) : ClosedRange<MyDate> {
+class DateRange(override val start: MyDate, override val endInclusive: MyDate)
+    : ClosedRange<MyDate>, Iterator<MyDate> {
+
+    private var currentDate = start
+
+    override fun hasNext(): Boolean = currentDate <= endInclusive
+
+    override fun next(): MyDate {
+        // what in case of no further elements?
+        val result = currentDate
+        if (hasNext()) currentDate = currentDate.nextDay()
+        return result
+    }
 
 // 2nd solution: implement "contains" method to allow "in" operator
 //    operator fun contains(date: MyDate): Boolean {
