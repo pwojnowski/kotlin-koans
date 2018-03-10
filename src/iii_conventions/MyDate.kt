@@ -10,10 +10,26 @@ data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int) : Comparab
 
 operator fun MyDate.rangeTo(other: MyDate): DateRange = DateRange(this, other)
 
+operator fun MyDate.plus(interval: TimeInterval): MyDate {
+    return addTimeIntervals(interval, 1)
+}
+
+operator fun MyDate.plus(repeatedInterval: RepeatedTimeInterval): MyDate {
+    var date = this
+    for (i in 1..(repeatedInterval.times)) {
+        date += repeatedInterval.interval
+    }
+    return date
+}
+
+class RepeatedTimeInterval(val interval: TimeInterval, val times: Int)
+
 enum class TimeInterval {
     DAY,
     WEEK,
-    YEAR
+    YEAR;
+
+    operator fun times(times: Int): RepeatedTimeInterval = RepeatedTimeInterval(this, times)
 }
 
 // 1st solution: implement ClosedRange interface
