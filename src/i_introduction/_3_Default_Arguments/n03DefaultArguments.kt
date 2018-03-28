@@ -24,3 +24,5 @@ fun task3(): String {
             foo("c", toUpperCase = true) +
             foo(name = "d", number = 2, toUpperCase = true))
 }
+
+class MyClass(val number: Number = Math.abs(-3))

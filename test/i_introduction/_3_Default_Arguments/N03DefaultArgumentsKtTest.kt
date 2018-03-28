@@ -8,4 +8,8 @@ class N03DefaultArgumentsKtTest {
     @Test fun testDefaultAndNamedParams() {
         assertEquals("a42b1C42D2", task3())
     }
+
+    @Test fun testMyClassShouldCallInitFunction() {
+        assertEquals(3, MyClass().number)
+    }
 }

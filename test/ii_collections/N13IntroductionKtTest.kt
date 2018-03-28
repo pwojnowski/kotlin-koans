@@ -9,4 +9,8 @@ class N13IntroductionKtTest {
     @Test fun testSetOfCustomers() {
         assertEquals(customers.values.toSet(), shop.getSetOfCustomers())
     }
+
+    @Test fun classNameMapping() {
+        assertEquals(listOf("String"), setOf(String::class.java).map { it.simpleName })
+    }
 }
